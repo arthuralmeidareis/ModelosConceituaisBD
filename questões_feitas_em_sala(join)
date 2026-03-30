@@ -1,0 +1,34 @@
+-- primeira questão (relacionamentos com join) 
+select nome_tipo
+from tipo t  join dependente d on t.cod_tipo = d.cod_tipo
+join empregado x on  x.cod_empregado = d.cod_empregado
+where lower (nome_empregado) = 'pato donald';
+
+-- segunda questão 
+select nome_empregado
+from empregado x, setor y
+where  x.cod_setor = y.cod_setor
+and lower(nome_Setor) = 'produção de sólidos';
+
+--terceira 
+
+select nome_dependente,nome_empregado
+from dependente x , empregado y , tipo t 
+where x.cod_empregado = y.cod_empregado
+and x.cod_tipo = t.cod_tipo
+and lower (nome_tipo) = 'agregado';
+
+--quarta
+
+select nome_dependente
+from dependente d, setor s , empregado x 
+where d.cod_empregado = x.cod_empregado
+and s.cod_setor = x.cod_setor
+and lower (nome_setor) = 'diretoria';
+
+--quinta 
+select nome_dependente
+from dependente x, empregado y
+where x.cod_empregado = y.cod_empregado
+and lower (nome_empregado) 
+in ('homer simpson','pato donald', 'cebolinha','pateta');
